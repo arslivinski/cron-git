@@ -81,6 +81,14 @@ if [ -z "$DIRECTORY" ]; then
   DIRECTORY="/$(echo "$REPOSITORY" | sed -E "s/^.*\/(.+)\.git$/\1/")"
 fi
 
+# WARNING!
+# If the directory exists, the contents will be removed.
+if [ -d "$DIRECTORY" ]; then
+  rm -rf "$DIRECTORY"/*
+else
+  mkdir -p "$DIRECTORY"
+fi
+
 if [ -n "$CLONE_OPTS" ]; then
   git clone "$CLONE_OPTS" "$REPOSITORY" "$DIRECTORY"
 else

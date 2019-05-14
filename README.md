@@ -17,7 +17,7 @@ options:
     --crontab, -c:
         A crontab expression that defines the peridiocity of the repository pulling. Default "* * * * *".
     --directory, -d:
-        The directory where the repository will be cloned. If not set, the last segment of the repository's URL will be used.
+        The directory where the repository will be cloned. If not set, the last segment of the repository's URL will be used. WARNING: The contents of the destination directory will be removed.
     --clone-opts:
         Additional arguments to be used on git-clone.
     --pull-opts:
@@ -27,4 +27,3 @@ options:
     <repository>
         The repository's GIT URL.
 ```
-
