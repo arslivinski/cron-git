@@ -81,11 +81,15 @@ if [ -z "$DIRECTORY" ]; then
   DIRECTORY="/$(echo "$REPOSITORY" | sed -E "s/^.*\/(.+)\.git$/\1/")"
 fi
 
+echo "Cloning repository \"$REPOSITORY\" into \"$DIRECTORY\""
+
 # WARNING!
 # If the directory exists, the contents will be removed.
 if [ -d "$DIRECTORY" ]; then
-  rm -rf "$DIRECTORY"/*
+  echo "Directory is not empty, removing contents"
+  find "$DIRECTORY" -mindepth 1 -delete
 else
+  echo "Creating \"$DIRECTORY\""
   mkdir -p "$DIRECTORY"
 fi
 
